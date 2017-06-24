@@ -2,63 +2,63 @@
 
 <html>
     <head>
-        <title>Shubham Agarwal</title>
+        <title>Pahlakhat</title>
 
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- CSS file -->
+        <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <!-- js file for jQuery -->
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
+        <!-- js file for Bootstrap -->
+        <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 
-        <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-        <link rel="stylesheet" href="css/main.css"> <!-- CSS reset -->
-
-        <!--	font awesome	-->
+        <!-- font awesome -->
         <script src="https://use.fontawesome.com/2e35531b99.js"></script>
     </head>
-
-    <body onload="document.body.className += ' loaded';">
-
-        <div class="main col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="background_img" style="z-index: 2"></div> 
-            <div class="main-header main-header-container col-lg-12 col-md-12 col-sm-12 col-xs-12" style="z-index: 8;">
-                <ul class="redirect-menu-items" style="margin: 40px 40px 0 0;">
-                    <li><a target="" style="color: white; font-weight: bold; font-size: 14px; background-color: Transparent; border: none; cursor:pointer; overflow: hidden; outline:none; padding: 5px; margin: 5px;" class="flex-item" href="index.html"><span>HOME</span></a></li>
-                    <li><a target="" style="color: white; font-weight: bold; font-size: 14px; background-color: Transparent; border: none; cursor:pointer; overflow: hidden; outline:none; padding: 5px; margin: 5px;" class="flex-item" href="pages/about.html"><span>ABOUT</span></a></li>
-                    <li><a target="" style="color: white; font-weight: bold; font-size: 14px; background-color: Transparent; border: none; cursor:pointer; overflow: hidden; outline:none; padding: 5px; margin: 5px;" class="flex-item" href="pages/code-shop.html"><span>CODE SHOP & BLOG</span></a></li>
-                    <li><a target="" style="color: white; font-weight: bold; font-size: 14px; background-color: Transparent; border: none; cursor:pointer; overflow: hidden; outline:none; padding: 5px; margin: 5px;" class="flex-item" href="pages/resume.html"><span>RESUME</span></a></li>
-                </ul>
-            </div>
-            <div class="main-body col-lg-12 col-md-12 col-sm-12 col-xs-12 main-body-container">
-
-		<div class="redirect-socials">
-			<ul class="1_redirect-socials" style="z-index: 10; top: 80%">
-        	            <li><a target="_blank" class="github flex-item" href="https://www.github.com/shubhamagarwal1993"><span>GitHub</span></a></li>
-        	            <li><a target="_blank" class="linkedin flex-item" href="https://www.linkedin.com/in/shubhamagarwal1993"><span>LinkedIn</span></a></li>
-                	    <li><a target="_blank" class="facebook flex-item" href="https://www.facebook.com/personalbot"><span>Facebook</span></a></li>
-	                    <li><a target="_blank" class="email flex-item" href="mailto:shubhamagarwal1993@gmail.com"><span>Email</span></a></li>
-        	            <li><a target="_blank" class="twitter flex-item" href="https://twitter.com/sagarwal1993"><span>Twitter</span></a></li>
-                	    <li><a target="_blank" class="google flex-item" href="https://plus.google.com/114539336503050066338"><span>Google+</span></a></li>
-	                </ul>
-			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fb-container">
-			    <div class="fb-messengermessageus flex-item" messenger_app_id="727801837362791" page_id="1143465175719756" color="blue" size="large"></div>
-			</div>
-		</div>
-            </div>
-
-
-            <div class="main-footer col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <body>
+        <!-- Top bar -->
+        <div class="navbar">
+            <div class="navbar-inner">
+                <a class="brand" href="#">ToDo API Client Demo</a>
             </div>
         </div>
 
+        <!-- Main body -->
+        <div id="main" class="container">
+            <table class="table table-striped">
+                <tr><td style="width: 1px;"></td><td><b>Task</b></td><td><b>Options</b></td></tr>
+                <tr>
+                    <td>
+                        <span class="label label-success">Done</span>
+                    </td>
+                    <td><p><b>Task title</b></p><p>Task description</p></td>
+                    <td>
+                        <button class="btn">Edit</button>
+                        <button class="btn">Delete</button>
+                        <span><button class="btn">Mark In Progress</button></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="label label-important">In Progress</span>
+                    </td>
+                    <td><p><b>Task title</b></p><p>Task description</p></td>
+                    <td>
+                        <button class="btn">Edit</button>
+                        <button class="btn">Delete</button>
+                        <span><button class="btn">Mark Done</button></span>
+                    </td>
+                </tr>
+            </table>
+            <button class="btn">Add Task</button>
+        </div>
+
+        <!-- js code will go here -->
+        <script type="text/javascript">
+
+            // application code here!
+
+        </script>
     </body>
 </html>
-
-<!--	google analytics tracking link	-->
-<script>
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-90653280-1', 'auto');
-	ga('send', 'pageview');
-</script>
