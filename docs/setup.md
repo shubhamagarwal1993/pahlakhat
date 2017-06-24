@@ -18,7 +18,37 @@ How to set up a flask application
  - 
 
 #### Setting up nginx
- - 
+ - install nginx
+ - now there should be a folder `/etc/nginx/sites-available` and `/etc/nginx/sites-enabled`.
+ - Inside `/etc/nginx/sites-available`
+   - make a file called `pahlakhat.conf` and put the following code in it
+   ```
+     server {
+       listen 80;
+       server_name hello.itu24.com;
+
+       root /path/to/hello;
+
+       access_log /path/to/hello/logs/access.log;
+       error_log /path/to/hello/logs/error.log;
+
+       location / {
+         proxy_set_header X-Forward-For $proxy_add_x_forwarded_for;
+         proxy_set_header Host $http_host;
+         proxy_redirect off;
+         if (!-f $request_filename) {
+           proxy_pass http://127.0.0.1:8000;
+           break;
+         }
+       }
+     }
+   ```
+ - Enable new configuration by creating a symbolic link in sites-enabled directory
+     `sudo ln -s /etc/nginx/sites-available/hello.conf /etc/nginx/sites-enabled/`
+ - Check configuration for errors:
+     `nginx -t`
+ - If configuration is ok, then reload nginx
+     `sudo service nginx reload`
 
 #### Setting up SSL certificates from let's encrypt
 
@@ -63,7 +93,9 @@ How to set up a flask application
          app.run()
      ```
  - Now running `gunicorn pahlakhat:app` will run the apolication
+   - `pahlakhat` is the name of the file (without extension) and `app` is the name of the Flask object.
  - We should be able to see `Hello World!` on our browser with a secure certificate as well
+ 
 
 ### We should be able to test here that the application is working
 
