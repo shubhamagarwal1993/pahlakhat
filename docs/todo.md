@@ -1,15 +1,5 @@
-// running app
-To start the application, we need to run gunicorn which will run the pahlakhat.py file and app.
-Go to `/var/www/vhosts/pahlakhat`
-and run `gunicorn pahlakhat:app`
-
 // TODO
 Should set up supervisor at some point to avoid this
 Close down extra ports open on EC2(60000 - 61000 for mosh)
 set up db and viewing from web browser
 proper login box and mutiple users (last thing to do - not now. This wil need another resource for users, with POST creating a user and so on)
-
-// nginx conf
-running `sudo ln /etc/nginx/sites-available/pahlakhat.conf /etc/nginx/sites-enabled/` will set up file in nginx
-then test using `nginx -t`
-reload nginx using `sudo service nginx reload`
