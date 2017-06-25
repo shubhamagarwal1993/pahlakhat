@@ -1,5 +1,10 @@
-write how this application set up was done
+# Flask webapp
 
-copy things fromt todo
+#### Architecture of application
+- refer 'docs/setup.md'
 
-make doc on RESTful implementation
+#### TODO
+- refer 'docs/todo.md'
+
+#### Follows a restful implementation
+- refer 'docs/*' on how the RESTful application is set up
