@@ -25,12 +25,23 @@ How to set up a flask application
    ```
      server {
        listen 80;
-       server_name hello.itu24.com;
+       listen [::]:80;
+       server_name pahlakhat.com www.pahlakhat.com;
+       return 301 https://$server_name$request_uri;
+     }
+     
+     server {
+     
+       listen 443 ssl http2;
+       listen [::]:443 ssl http2;
+       include snippets/ssl-pahlakhat.com.conf
+       include snippets/ssl-params.conf;
 
-       root /path/to/hello;
+       root /var/www/pahlakhat;
+       server_name pahlakhat.com www.pahlakhat.com
 
-       access_log /path/to/hello/logs/access.log;
-       error_log /path/to/hello/logs/error.log;
+       access_log /var/www/vhosts/pahlakhat/logs/access.log;
+       error_log /var/www/vhosts/pahlakhat/logs/error.log;
 
        location / {
          proxy_set_header X-Forward-For $proxy_add_x_forwarded_for;
@@ -93,10 +104,9 @@ How to set up a flask application
        if __name__ == '__main__':
          app.run()
      ```
- - Now running `gunicorn pahlakhat:app` will run the apolication
+ - Now running `gunicorn pahlakhat:app` will run the application
    - `pahlakhat` is the name of the file (without extension) and `app` is the name of the Flask object.
  - We should be able to see `Hello World!` on our browser with a secure certificate as well
- 
 
 ### We should be able to test here that the application is working
 
