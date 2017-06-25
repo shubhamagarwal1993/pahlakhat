@@ -54,6 +54,8 @@ How to set up a flask application
        }
      }
    ```
+ - Create the directory for nginx logs:
+     `/var/www/vhosts/pahlakhat/logs/`
  - Enable new configuration by creating a symbolic link in sites-enabled directory
      `sudo ln -s /etc/nginx/sites-available/hello.conf /etc/nginx/sites-enabled/`
  - Check configuration for errors:
@@ -111,3 +113,20 @@ How to set up a flask application
 ### We should be able to test here that the application is working
 
 #### Setting up supervisor on gunicorn
+ - install supervisor (can have virtualenv activated)
+     `sudo apt-get install supervisor`
+ - make a configuration file
+     `sudo vim /etc/supervisor/conf.d/pahlakhat.conf`
+ - put the following line in it
+     ```
+       [program:pahlakhat]
+       command = /var/www/vhosts/pahlakhat/pahlakhatenv/bin/gunicorn pahlakhat:app -w 4
+       directory = /var/www/vhosts/pahlakhat/pahlakhatenv
+       user = ubuntu
+       redirect_stderr = True
+       environment = PRODUCTION=1
+     ```
+ - now update and restart supervisor
+     `sudo supervisorctl reread`
+     `sudo supervisorctl update`
+     `sudo supervisorctl start pahlakhat`
