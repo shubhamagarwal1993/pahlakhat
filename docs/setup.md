@@ -121,12 +121,17 @@ How to set up a flask application
      ```
        [program:pahlakhat]
        command = /var/www/vhosts/pahlakhat/pahlakhatenv/bin/gunicorn pahlakhat:app -w 4
-       directory = /var/www/vhosts/pahlakhat/pahlakhatenv
+       directory = /var/www/vhosts/pahlakhat
        user = ubuntu
-       redirect_stderr = True
+       autostart = tue
+       autorestart = true
+       redirect_stderr = true
        environment = PRODUCTION=1
      ```
  - now update and restart supervisor
      `sudo supervisorctl reread`
      `sudo supervisorctl update`
      `sudo supervisorctl start pahlakhat`
+     `sudo supervisorctl restart pahlakhat`
+
+#### should be able to close gunicorn running in searate tab and check that website is up
