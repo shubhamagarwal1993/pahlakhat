@@ -9,7 +9,7 @@ app = Flask(__name__)
 def get_tasks():
     return jsonify({'Error': 'inside index case'})
 
-@app.route("/furniture", methods=['GET', 'POST'])
+@app.route("/furniture", methods=['GET', 'POST', 'PUT', 'DELETE'])
 def get_furniture():
     if(request.method == 'GET'):
         return router(request.method, 'Furniture')
@@ -22,13 +22,26 @@ def get_furniture():
     else:
        return jsonify({'Error': 'could not determine HTTP verb'})
 
+@app.route("/cart", methods=['GET', 'POST', 'PUT', 'DELETE'])
+def get_cart():
+    if(request.method == 'GET'):
+        return router(request.method, 'Cart')
+    elif(request.method == 'POST'):
+        return router(request.method, 'Cart')
+    elif(request.method == 'PUT'):
+        return router(request.method, 'Cart')
+    elif(request.method == 'DELETE'):
+        return router(request.method, 'Cart')
+    else:
+       return jsonify({'Error': 'could not determine HTTP verb'})
+
 def router(method, model):
     if(method == 'GET'):
         return eval('_get' + model + '()')
     if(method == 'POST'):
         return eval('_create' + model + '()')
     if(method == 'PUT'):
-        return eval('_create' + model + '()')
+        return eval('_update' + model + '()')
     if(method == 'DELETE'):
         return eval('_delete' + model + '()')
 
@@ -49,15 +62,36 @@ def _getFurniture():
     else:
         return jsonify({'furniture': tasks})
 
-def _createfurniture():
-    return jsonify({'furniture': tasks})
+def _createFurniture():
+    return jsonify({'furniture': 'create new furniture'})
 
-def _updatefurniture():
-    return jsonify({'furniture': tasks})
+def _updateFurniture():
+    return jsonify({'furniture': 'update existing furniture'})
 
-def _deletefurniture():
-    return jsonify({'furniture': tasks})
+def _deleteFurniture():
+    return jsonify({'furniture': 'delete furniture'})
+
+def _getCart():
+    if not request.json or not 'user_id' in request.json:
+        return jsonify({'cart': carts})
+    else:
+        user_id = request.json.get('user_id')
+        return jsonify(getCart(user_id))
+
+def _createCart():
+    if not request.json or not 'user_id' in request.json:
+        return jsonify({'Error' : 'provide user id'})
+    else:
+        user_id = request.json.get('user_id')
+        print(user_id)
+        return jsonify(addToCart(user_id))
+
+def _updateCart():
+    return jsonify({'cart': 'reached update cart'})
+
+def _deleteCart():
+    return jsonify({'furniture': 'reached delete cart'})
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080)
+    app.run(host="0.0.0.0", port=8081)
 
